@@ -29,24 +29,29 @@ namespace passgen
       while (true)
       {
         int choice = randomizer::random(generator, 0, 3);
+        int second_choice {};
         if (uppercase && choice == args::UPPERCASE)
         {
-          res += abc_uppercase[rand() % abc_uppercase.length()];
+          second_choice = randomizer::random(generator, 0, abc_uppercase.length() - 1);
+          res += abc_uppercase[second_choice];
           break;
         }
         else if (lowercase && choice == args::LOWERCASE)
         {
-          res += abc_lowercase[rand() % abc_lowercase.length()];
+          second_choice = randomizer::random(generator, 0, abc_lowercase.length() - 1);
+          res += abc_lowercase[second_choice];
           break;
         }
         else if (digits && choice == args::DIGIT)
         {
-          res += numbers[rand() % numbers.length()];
+          second_choice = randomizer::random(generator, 0, numbers.length() - 1);
+          res += numbers[second_choice];
           break;
         }
         else if (symbols && choice == args::SYMBOL)
         {
-          res += specials[rand() % specials.length()];
+          second_choice = randomizer::random(generator, 0, specials.length() - 1);
+          res += specials[second_choice];
           break;
         }
       }

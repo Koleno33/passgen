@@ -8,7 +8,7 @@ A simple utility to generate password.
 # Usage
 `passgen [OPTIONS] <pass-length>`
 
-<pass-length> is a number specifying the length. It can be left unspecified, then a random length between 8 and 12 will be selected.
+`<pass-length>` is a number specifying the length. It can be left unspecified, then a random length between 8 and 12 will be selected.
 
 `[OPTIONS]`:
 - `-n`: include numbers in password

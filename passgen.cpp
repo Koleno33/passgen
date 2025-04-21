@@ -1,9 +1,10 @@
 #include "arguments.h"
 #include "passgen.h"
+#include "randomizer.h"
 
 namespace passgen
 {
-  std::string generate_password(int flags[])
+  std::string generate_password(int flags[], randomizer::PRNG& generator)
   {
     std::string res { "" };
 
@@ -27,7 +28,7 @@ namespace passgen
     {
       while (true)
       {
-        int choice = rand() % 4;
+        int choice = randomizer::random(generator, 0, 3);
         if (uppercase && choice == args::UPPERCASE)
         {
           res += abc_uppercase[rand() % abc_uppercase.length()];
@@ -57,7 +58,9 @@ namespace passgen
 
 int main(int argc, char* argv[])
 {
-  srand(time(NULL));
+  randomizer::PRNG generator{};
+  randomizer::initGenerator(generator);
+
   if (argc >= 1)
   {
     int flags[] { 0, 0, 0, 0, 0 };
@@ -70,7 +73,7 @@ int main(int argc, char* argv[])
         return 1;
       }
     }
-    std::cout << passgen::generate_password(flags) << '\n';
+    std::cout << passgen::generate_password(flags, generator) << '\n';
   }
   return 0;
 }

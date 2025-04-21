@@ -1,7 +1,6 @@
 #ifndef ARGUMENTS_H
 #define ARGUMENTS_H
 
-
 #include "passgen.h"
 #include <iostream>
 
